@@ -1,4 +1,4 @@
-import type {MessageStatus} from "@/types/chat"
+import type { MessageStatus } from "@/types/chat"
 
 export type IncomingNotification = {
   id: string
@@ -64,5 +64,5 @@ export function extractStatus(body: Record<string, unknown>): StatusNotification
     noAccount: "failed",
   }
 
-  return id && statusMap[rawStatus] ? {id, status: statusMap[rawStatus]} : null
+  return id && statusMap[rawStatus] ? { id, status: statusMap[rawStatus] } : null
 }

@@ -1,9 +1,9 @@
-import {useState} from "react"
+import { useState } from "react"
 
-import {ConnectScreen} from "@/components/connection/connect-screen"
-import {MessengerPage} from "@/components/messenger/messenger-page"
-import {Toaster} from "@/components/ui/sonner"
-import type {GreenApiCredentials} from "@/lib/green-api"
+import { ConnectScreen } from "@/components/connection/connect-screen"
+import { MessengerPage } from "@/components/messenger/messenger-page"
+import { Toaster } from "@/components/ui/sonner"
+import type { GreenApiCredentials } from "@/lib/green-api"
 
 export default function App() {
   const [credentials, setCredentials] = useState<GreenApiCredentials | null>(null)
@@ -16,9 +16,9 @@ export default function App() {
           onDisconnect={() => setCredentials(null)}
         />
       ) : (
-        <ConnectScreen onConnected={setCredentials}/>
+        <ConnectScreen onConnected={setCredentials} />
       )}
-      <Toaster richColors position="top-center"/>
+      <Toaster richColors position="top-center" />
     </>
   )
 }

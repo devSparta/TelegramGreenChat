@@ -79,7 +79,7 @@ export class GreenApiClient {
         ...init,
         headers: {
           Accept: "application/json",
-          ...(init.body ? {"Content-Type": "application/json"} : {}),
+          ...(init.body ? { "Content-Type": "application/json" } : {}),
           ...init.headers,
         },
       })
@@ -113,14 +113,14 @@ export class GreenApiClient {
   }
 
   getStateInstance(signal?: AbortSignal) {
-    return this.request<InstanceState>(this.endpoint("getStateInstance"), {signal})
+    return this.request<InstanceState>(this.endpoint("getStateInstance"), { signal })
   }
 
   checkAccount(phoneNumber: string, signal?: AbortSignal) {
     return this.request<CheckAccountResult>(this.endpoint("checkAccount"), {
       method: "POST",
       signal,
-      body: JSON.stringify({phoneNumber: Number(phoneNumber)}),
+      body: JSON.stringify({ phoneNumber: Number(phoneNumber) }),
     })
   }
 
@@ -128,21 +128,21 @@ export class GreenApiClient {
     return this.request<SendMessageResult>(this.endpoint("sendMessage"), {
       method: "POST",
       signal,
-      body: JSON.stringify({chatId, message}),
+      body: JSON.stringify({ chatId, message }),
     })
   }
 
   receiveNotification(signal?: AbortSignal, timeout = 5) {
     return this.request<NotificationEnvelope | null>(
       this.endpoint("receiveNotification", `?receiveTimeout=${timeout}`),
-      {signal},
+      { signal },
     )
   }
 
   deleteNotification(receiptId: number, signal?: AbortSignal) {
     return this.request<{ result: boolean; reason?: string }>(
       this.endpoint("deleteNotification", `/${receiptId}`),
-      {method: "DELETE", signal},
+      { method: "DELETE", signal },
     )
   }
 }
